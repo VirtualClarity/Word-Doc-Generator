@@ -1,0 +1,6 @@
+C:\inetpub\Word-Doc-Generator\WordDocumentGenerator.Library\bin\Debug\WordDocumentGenerator.Library.dll
+C:\inetpub\Word-Doc-Generator\WordDocumentGenerator.Library\bin\Debug\WordDocumentGenerator.Library.pdb
+C:\inetpub\Word-Doc-Generator\WordDocumentGenerator.Library\bin\Debug\DocumentFormat.OpenXml.dll
+C:\inetpub\Word-Doc-Generator\WordDocumentGenerator.Library\obj\Debug\WordDocumentGenerator.Library.csprojResolveAssemblyReference.cache
+C:\inetpub\Word-Doc-Generator\WordDocumentGenerator.Library\obj\Debug\WordDocumentGenerator.Library.dll
+C:\inetpub\Word-Doc-Generator\WordDocumentGenerator.Library\obj\Debug\WordDocumentGenerator.Library.pdb

@@ -509,26 +509,31 @@ namespace WordDocumentGenerator.Library
 
                 if (IsContentControlMultiline(contentControl))
                 {
-                    List<string> textSplitted = content.Split(Environment.NewLine.ToCharArray()).ToList();
-                    bool addBreak = false;
-
-                    foreach (string textSplit in textSplitted)
-                    {
-                        Run run = CreateRun(openXmlCompositeElement, textSplit);                        
-
-                        if (addBreak)
-                        {
-                            run.AppendChild<Break>(new Break());
-                        }
-
-                        if (!addBreak)
-                        {
-                            addBreak = true;
-                        }
-
-                        runs.Add(run);
-                    }
-                }
+					if (String.IsNullOrEmpty(content))
+					{
+						runs.Add(CreateRun(openXmlCompositeElement, String.Empty));								// Put in an empty string to make sure any
+					}																							// example text is overwritten
+					else
+					{
+						while (content.Length > 0)
+						{
+							Run run;
+							var nextNewLine = content.IndexOf(Environment.NewLine, System.StringComparison.Ordinal);
+							if (nextNewLine > -1)
+							{	// There is a new line in the string
+								run = CreateRun(openXmlCompositeElement, content.Substring(0, nextNewLine + 1));	// Create a run for everything up to the NL
+								run.AppendChild<Break>(new Break());												// Append a break to represent the new line
+								content = content.Substring(nextNewLine + Environment.NewLine.Length);				// Remove everything we have already dealt with
+							}
+							else
+							{	// There are no more new lines
+								run = CreateRun(openXmlCompositeElement, content);									// Put everything left in as another run
+								content = "";
+							}
+							runs.Add(run);
+						}
+					}
+				}
                 else
                 {
                     runs.Add(CreateRun(openXmlCompositeElement, content));                    
